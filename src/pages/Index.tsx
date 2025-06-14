@@ -3,6 +3,12 @@ import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import Projects from '@/components/Projects';
+import Skills from '@/components/Skills';
+import Resume from '@/components/Resume';
+import Blog from '@/components/Blog';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   useEffect(() => {
@@ -40,41 +46,33 @@ const Index = () => {
         <About />
       </section>
 
-      {/* Placeholder sections for navigation */}
-      <section id="projects" className="min-h-screen flex items-center justify-center bg-accent/20">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold mb-4">Projects</h2>
-          <p className="text-muted-foreground">Coming soon...</p>
-        </div>
+      {/* Projects Section */}
+      <section id="projects">
+        <Projects />
       </section>
 
-      <section id="skills" className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold mb-4">Skills</h2>
-          <p className="text-muted-foreground">Coming soon...</p>
-        </div>
+      {/* Skills Section */}
+      <section id="skills">
+        <Skills />
       </section>
 
-      <section id="resume" className="min-h-screen flex items-center justify-center bg-accent/20">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold mb-4">Resume</h2>
-          <p className="text-muted-foreground">Coming soon...</p>
-        </div>
+      {/* Resume Section */}
+      <section id="resume">
+        <Resume />
       </section>
 
-      <section id="blog" className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold mb-4">Blog</h2>
-          <p className="text-muted-foreground">Coming soon...</p>
-        </div>
+      {/* Blog Section */}
+      <section id="blog">
+        <Blog />
       </section>
 
-      <section id="contact" className="min-h-screen flex items-center justify-center bg-accent/20">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold mb-4">Contact</h2>
-          <p className="text-muted-foreground">Coming soon...</p>
-        </div>
+      {/* Contact Section */}
+      <section id="contact">
+        <Contact />
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
