@@ -1,9 +1,12 @@
 
+import { useState } from 'react';
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 const Blog = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
   const blogPosts = [
     {
       title: 'The Future of AI in Web Development',
@@ -63,6 +66,10 @@ const Blog = () => {
 
   const categories = ['All', 'AI & Technology', 'Development', 'Programming', 'Cloud & DevOps', 'Team & Process', 'Performance'];
 
+  const filteredPosts = selectedCategory === 'All' 
+    ? blogPosts 
+    : blogPosts.filter(post => post.category === selectedCategory);
+
   return (
     <div className="min-h-screen py-20">
       <div className="container mx-auto px-4">
@@ -85,10 +92,11 @@ const Blog = () => {
             {categories.map((category, index) => (
               <Button 
                 key={category}
-                variant={index === 0 ? "default" : "outline"}
+                variant={selectedCategory === category ? "default" : "outline"}
                 size="sm"
                 className="hover-scale transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${0.3 + index * 0.05}s` }}
+                onClick={() => setSelectedCategory(category)}
               >
                 {category}
               </Button>
@@ -96,48 +104,50 @@ const Blog = () => {
           </div>
 
           {/* Featured Post */}
-          <Card className="mb-12 overflow-hidden hover-scale transition-all duration-500 hover:shadow-2xl animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <div className="md:flex">
-              <div className="md:w-1/2">
-                <img 
-                  src={blogPosts[0].image}
-                  alt={blogPosts[0].title}
-                  className="w-full h-64 md:h-full object-cover"
-                />
-              </div>
-              <div className="md:w-1/2 p-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                    Featured
-                  </span>
-                  <span className="px-3 py-1 bg-accent/20 text-accent-foreground rounded-full text-sm">
-                    {blogPosts[0].category}
-                  </span>
+          {filteredPosts.length > 0 && (
+            <Card className="mb-12 overflow-hidden hover-scale transition-all duration-500 hover:shadow-2xl animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <div className="md:flex">
+                <div className="md:w-1/2">
+                  <img 
+                    src={filteredPosts[0].image}
+                    alt={filteredPosts[0].title}
+                    className="w-full h-64 md:h-full object-cover"
+                  />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-primary">{blogPosts[0].title}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">{blogPosts[0].excerpt}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-sm text-muted-foreground gap-4">
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {new Date(blogPosts[0].date).toLocaleDateString()}
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {blogPosts[0].readTime}
-                    </div>
+                <div className="md:w-1/2 p-8">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                      Featured
+                    </span>
+                    <span className="px-3 py-1 bg-accent/20 text-accent-foreground rounded-full text-sm">
+                      {filteredPosts[0].category}
+                    </span>
                   </div>
-                  <Button className="hover-scale">
-                    Read More <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <h3 className="text-2xl font-bold mb-4 text-primary">{filteredPosts[0].title}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{filteredPosts[0].excerpt}</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center text-sm text-muted-foreground gap-4">
+                      <div className="flex items-center">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        {new Date(filteredPosts[0].date).toLocaleDateString()}
+                      </div>
+                      <div className="flex items-center">
+                        <Clock className="w-4 h-4 mr-1" />
+                        {filteredPosts[0].readTime}
+                      </div>
+                    </div>
+                    <Button className="hover-scale" onClick={() => alert('Blog post coming soon!')}>
+                      Read More <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          )}
 
           {/* Blog Posts Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.slice(1).map((post, index) => (
+            {filteredPosts.slice(1).map((post, index) => (
               <Card 
                 key={post.title}
                 className="group overflow-hidden hover-scale transition-all duration-500 hover:shadow-xl border-border/50 bg-card/50 backdrop-blur-sm animate-fade-in"
@@ -190,7 +200,12 @@ const Blog = () => {
                         {post.readTime}
                       </div>
                     </div>
-                    <Button size="sm" variant="ghost" className="text-primary hover:text-primary/80">
+                    <Button 
+                      size="sm" 
+                      variant="ghost" 
+                      className="text-primary hover:text-primary/80"
+                      onClick={() => alert('Blog post coming soon!')}
+                    >
                       Read <ArrowRight className="w-3 h-3 ml-1" />
                     </Button>
                   </div>
@@ -201,7 +216,12 @@ const Blog = () => {
 
           {/* Load More Button */}
           <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-            <Button size="lg" variant="outline" className="hover-scale">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="hover-scale"
+              onClick={() => alert('More articles coming soon!')}
+            >
               Load More Articles
             </Button>
           </div>

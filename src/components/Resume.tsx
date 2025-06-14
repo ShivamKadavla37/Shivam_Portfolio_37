@@ -1,9 +1,68 @@
-
 import { Download, Calendar, MapPin, Award, Briefcase, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Resume = () => {
+  const handleDownloadResume = () => {
+    // Create a simple resume content
+    const resumeContent = `
+SHIVAM KADAVLA
+Software Developer
+
+CONTACT:
+Email: shivam.kadavla@example.com
+Phone: +1 (555) 123-4567
+Location: San Francisco, CA
+
+EXPERIENCE:
+Senior Full-Stack Developer | Tech Innovations Inc. | 2022 - Present
+- Led development of AI-powered analytics platform serving 100K+ users
+- Architected microservices infrastructure reducing response time by 40%
+- Mentored team of 5 junior developers and established coding standards
+- Implemented CI/CD pipelines improving deployment efficiency by 60%
+
+Full-Stack Developer | Digital Solutions Ltd. | 2020 - 2022
+- Built responsive web applications using React, Node.js, and PostgreSQL
+- Collaborated with design team to implement pixel-perfect UI components
+- Optimized database queries resulting in 50% performance improvement
+- Integrated third-party APIs and payment processing systems
+
+Software Developer | StartUp Ventures | 2019 - 2020
+- Developed MVP for fintech startup using modern web technologies
+- Implemented real-time features using WebSocket and Socket.io
+- Created automated testing suites achieving 90% code coverage
+- Participated in agile development process and sprint planning
+
+EDUCATION:
+Master of Computer Science | Stanford University | 2017 - 2019
+Bachelor of Computer Engineering | UC Berkeley | 2013 - 2017
+
+CERTIFICATIONS:
+- AWS Certified Solutions Architect (2023)
+- Google Cloud Professional Developer (2022)
+- Meta React Advanced Certification (2022)
+- MongoDB Certified Developer (2021)
+
+SKILLS:
+- Frontend: React, TypeScript, Next.js, Tailwind CSS
+- Backend: Node.js, Python, Express, GraphQL
+- Databases: PostgreSQL, MongoDB, Redis
+- Cloud: AWS, Google Cloud, Docker, Kubernetes
+- Tools: Git, Jenkins, Jest, Cypress
+    `;
+
+    // Create and download the file
+    const blob = new Blob([resumeContent], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Shivam_Kadavla_Resume.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
+
   const experiences = [
     {
       title: 'Senior Full-Stack Developer',
@@ -84,7 +143,12 @@ const Resume = () => {
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Professional journey and achievements in software development
             </p>
-            <Button size="lg" className="hover-scale animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <Button 
+              size="lg" 
+              className="hover-scale animate-fade-in" 
+              style={{ animationDelay: '0.2s' }}
+              onClick={handleDownloadResume}
+            >
               <Download className="w-4 h-4 mr-2" />
               Download Resume
             </Button>

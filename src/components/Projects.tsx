@@ -1,10 +1,13 @@
 
-import { ExternalLink, Github, Code2, Globe, Database, Brain } from 'lucide-react';
+import { useState } from 'react';
+import { ExternalLink, Github, Code2, Globe, Database, Brain, Smartphone, Server, Palette } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 const Projects = () => {
-  const projects = [
+  const [showAllProjects, setShowAllProjects] = useState(false);
+
+  const allProjects = [
     {
       title: 'AI-Powered Analytics Dashboard',
       description: 'A comprehensive analytics platform using machine learning to provide predictive insights and real-time data visualization.',
@@ -32,7 +35,36 @@ const Projects = () => {
       live: '#',
       icon: Database,
     },
+    {
+      title: 'Mobile-First Social App',
+      description: 'React Native social media application with real-time messaging, photo sharing, and location-based features.',
+      image: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?w=500&h=300&fit=crop',
+      tech: ['React Native', 'Firebase', 'Redux', 'Socket.io'],
+      github: '#',
+      live: '#',
+      icon: Smartphone,
+    },
+    {
+      title: 'Real-Time Collaboration Tool',
+      description: 'Web-based collaborative workspace with real-time editing, video calls, and project management features.',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop',
+      tech: ['React', 'WebRTC', 'Socket.io', 'Node.js'],
+      github: '#',
+      live: '#',
+      icon: Server,
+    },
+    {
+      title: 'AI Design Assistant',
+      description: 'Machine learning powered design tool that generates UI components and provides design suggestions.',
+      image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=500&h=300&fit=crop',
+      tech: ['React', 'Python', 'OpenAI', 'Figma API'],
+      github: '#',
+      live: '#',
+      icon: Palette,
+    },
   ];
+
+  const projectsToShow = showAllProjects ? allProjects : allProjects.slice(0, 3);
 
   return (
     <div className="min-h-screen py-20 bg-gradient-to-b from-accent/5 to-background">
@@ -53,7 +85,7 @@ const Projects = () => {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {projectsToShow.map((project, index) => (
               <Card 
                 key={project.title}
                 className="group hover-scale transition-all duration-500 hover:shadow-2xl border-border/50 bg-card/50 backdrop-blur-sm animate-fade-in overflow-hidden"
@@ -67,11 +99,11 @@ const Projects = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-4 left-4 right-4 flex gap-2">
-                      <Button size="sm" variant="secondary" className="opacity-90 hover:opacity-100">
+                      <Button size="sm" variant="secondary" className="opacity-90 hover:opacity-100" onClick={() => window.open(project.github, '_blank')}>
                         <Github className="w-4 h-4 mr-2" />
                         Code
                       </Button>
-                      <Button size="sm" className="opacity-90 hover:opacity-100">
+                      <Button size="sm" className="opacity-90 hover:opacity-100" onClick={() => window.open(project.live, '_blank')}>
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Live
                       </Button>
@@ -112,9 +144,14 @@ const Projects = () => {
 
           {/* View All Projects Button */}
           <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-            <Button size="lg" variant="outline" className="hover-scale">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="hover-scale"
+              onClick={() => setShowAllProjects(!showAllProjects)}
+            >
               <Code2 className="w-4 h-4 mr-2" />
-              View All Projects
+              {showAllProjects ? 'Show Less Projects' : 'View All Projects'}
             </Button>
           </div>
         </div>
