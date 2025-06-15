@@ -9,6 +9,7 @@ import Resume from '@/components/Resume';
 import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import AIChatbot from '@/components/AIChatbot';
 
 const Index = () => {
   useEffect(() => {
@@ -73,6 +74,9 @@ const Index = () => {
 
       {/* Footer */}
       <Footer />
+
+      {/* AI Chatbot */}
+      <AIChatbot />
     </div>
   );
 };
