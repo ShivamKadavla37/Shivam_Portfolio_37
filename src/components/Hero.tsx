@@ -80,9 +80,9 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10">
         <div className="text-center space-y-8 animate-fade-in">
           {/* Profile Photo */}
-          <div className="relative mx-auto w-48 h-48 animate-scale-in" style={{ animationDelay: '0.2s' }}>
+          <div className="relative mx-auto w-64 h-64 md:w-72 md:h-72 animate-scale-in" style={{ animationDelay: '0.2s' }}>
             <Avatar className="w-full h-full border-4 border-primary/20 shadow-2xl">
-              <AvatarImage src="/lovable-uploads/34a2b5da-d45f-4f0b-b0d4-098a64cbb164.png" alt="Shivam Kadavla" />
+              <AvatarImage src="/lovable-uploads/34a2b5da-d45f-4f0b-b0d4-098a64cbb164.png" alt="Shivam Kadavla" className="object-cover" />
               <AvatarFallback className="text-6xl font-bold bg-gradient-to-br from-primary to-primary/70 text-primary-foreground">
                 SK
               </AvatarFallback>
