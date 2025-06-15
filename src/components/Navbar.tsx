@@ -26,9 +26,10 @@ const Navbar = () => {
               <img 
                 src="/lovable-uploads/6311f9ad-7e3b-401a-8877-66fa9f2bceb4.png" 
                 alt="Shivam Kadavla Logo" 
-                className="w-10 h-10 animate-spin-slow hover:animate-pulse transition-all duration-300"
+                className="w-8 h-8 filter brightness-0 invert-0 dark:invert opacity-80 hover:opacity-100 transition-all duration-300"
                 style={{
-                  animation: 'float 3s ease-in-out infinite, spin 8s linear infinite'
+                  animation: 'float 3s ease-in-out infinite',
+                  filter: 'brightness(0) saturate(100%) invert(11%) sepia(84%) saturate(1352%) hue-rotate(222deg) brightness(92%) contrast(98%)'
                 }}
               />
               <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate-fade-in">
