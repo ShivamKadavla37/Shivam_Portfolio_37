@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, User, Sparkles, Zap } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User, Sparkles, Zap, Calendar, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 
 interface Message {
   id: string;
@@ -22,6 +23,7 @@ const AIChatbot = () => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -31,6 +33,15 @@ const AIChatbot = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Update current date/time every minute
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 60000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const projects = [
     {
@@ -165,6 +176,28 @@ Check out his blog section for insights and learnings!`;
     setIsOpen(false);
   };
 
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const formatDateTime = (date: Date) => {
+    return {
+      date: date.toLocaleDateString('en-US', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      }),
+      time: date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      })
+    };
+  };
+
+  const { date, time } = formatDateTime(currentDateTime);
+
   return (
     <>
       {/* Floating Chat Button */}
@@ -175,11 +208,9 @@ Check out his blog section for insights and learnings!`;
           <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse"></div>
           
           <Button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={handleToggle}
             size="lg"
-            className={`relative rounded-full w-16 h-16 shadow-2xl hover-scale transition-all duration-300 ${
-              isOpen ? 'bg-destructive hover:bg-destructive/90' : 'bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700'
-            }`}
+            className="relative rounded-full w-16 h-16 shadow-2xl hover-scale transition-all duration-300 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700"
           >
             {isOpen ? (
               <X className="w-6 h-6 animate-scale-in" />
@@ -198,8 +229,8 @@ Check out his blog section for insights and learnings!`;
         <div className="fixed bottom-24 right-6 w-80 h-96 z-40 animate-scale-in">
           <Card className="h-full shadow-2xl border-primary/20 bg-background/95 backdrop-blur-md overflow-hidden">
             <div className="flex flex-col h-full">
-              {/* Enhanced Header */}
-              <div className="relative flex items-center gap-3 p-4 border-b border-border bg-gradient-to-r from-primary/10 to-blue-50 rounded-t-lg">
+              {/* Enhanced Header with Date/Time Table */}
+              <div className="relative p-4 border-b border-border bg-gradient-to-r from-primary/10 to-blue-50 rounded-t-lg">
                 {/* Animated background pattern */}
                 <div className="absolute inset-0 opacity-5">
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/20 to-transparent"></div>
@@ -207,26 +238,53 @@ Check out his blog section for insights and learnings!`;
                   <Sparkles className="absolute bottom-2 left-8 w-3 h-3 text-blue-500/30 animate-bounce" />
                 </div>
                 
-                <div className="relative w-10 h-10 bg-gradient-to-br from-primary/20 to-blue-100 rounded-full flex items-center justify-center animate-pulse">
-                  <Bot className="w-5 h-5 text-primary animate-bounce" />
+                {/* Header Content */}
+                <div className="relative flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-blue-100 rounded-full flex items-center justify-center animate-pulse">
+                      <Bot className="w-5 h-5 text-primary animate-bounce" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm flex items-center gap-2">
+                        AI Assistant
+                        <Sparkles className="w-3 h-3 text-yellow-500 animate-pulse" />
+                      </h3>
+                      <p className="text-xs text-muted-foreground">Ask about Shivam's work</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleClose}
+                      className="h-8 w-8 p-0 hover:bg-destructive/10 hover:text-destructive transition-colors"
+                    >
+                      <X className="w-4 h-4" />
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex-1 relative">
-                  <h3 className="font-semibold text-sm flex items-center gap-2">
-                    AI Assistant
-                    <Sparkles className="w-3 h-3 text-yellow-500 animate-pulse" />
-                  </h3>
-                  <p className="text-xs text-muted-foreground">Ask about Shivam's work</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={handleClose}
-                    className="h-8 w-8 p-0 hover:bg-destructive/10 hover:text-destructive transition-colors"
-                  >
-                    <X className="w-4 h-4" />
-                  </Button>
+
+                {/* Attractive Date/Time Table */}
+                <div className="relative bg-gradient-to-r from-background/80 to-primary/5 rounded-lg border border-primary/10 backdrop-blur-sm">
+                  <Table>
+                    <TableBody>
+                      <TableRow className="border-0 hover:bg-transparent">
+                        <TableCell className="p-2 w-1/2">
+                          <div className="flex items-center gap-2 text-xs">
+                            <Calendar className="w-3 h-3 text-primary animate-pulse" />
+                            <span className="font-medium text-foreground">{date}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell className="p-2 w-1/2">
+                          <div className="flex items-center gap-2 text-xs">
+                            <Clock className="w-3 h-3 text-blue-500 animate-pulse" />
+                            <span className="font-medium text-foreground">{time}</span>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
                 </div>
               </div>
 
