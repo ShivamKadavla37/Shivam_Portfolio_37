@@ -49,7 +49,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-accent/10">
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-accent/10 pt-16">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Grid Pattern */}
