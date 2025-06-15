@@ -82,7 +82,7 @@ const Hero = () => {
           {/* Profile Photo */}
           <div className="relative mx-auto w-48 h-48 animate-scale-in" style={{ animationDelay: '0.2s' }}>
             <Avatar className="w-full h-full border-4 border-primary/20 shadow-2xl">
-              <AvatarImage src="/placeholder.svg" alt="Shivam Kadavla" />
+              <AvatarImage src="/lovable-uploads/34a2b5da-d45f-4f0b-b0d4-098a64cbb164.png" alt="Shivam Kadavla" />
               <AvatarFallback className="text-6xl font-bold bg-gradient-to-br from-primary to-primary/70 text-primary-foreground">
                 SK
               </AvatarFallback>
