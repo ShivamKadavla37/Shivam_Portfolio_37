@@ -4,7 +4,6 @@ import { MessageCircle, X, Send, Bot, User, Sparkles, Zap, Calendar, Clock } fro
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
-import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 
 interface Message {
   id: string;
@@ -176,14 +175,6 @@ Check out his blog section for insights and learnings!`;
     }
   };
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-
   const formatDateTime = (date: Date) => {
     return {
       date: date.toLocaleDateString('en-US', {
@@ -204,191 +195,147 @@ Check out his blog section for insights and learnings!`;
 
   return (
     <>
-      {/* Floating Chat Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <div className="relative">
-          {/* Animated rings around the button */}
-          <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping"></div>
-          <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse"></div>
-          
-          <Button
-            onClick={handleToggle}
-            size="lg"
-            className="relative rounded-full w-16 h-16 shadow-2xl hover-scale transition-all duration-300 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700"
-          >
-            {isOpen ? (
-              <X className="w-6 h-6 animate-scale-in" />
-            ) : (
-              <div className="relative">
-                <MessageCircle className="w-6 h-6 animate-bounce" />
-                <Sparkles className="w-3 h-3 absolute -top-1 -right-1 text-yellow-300 animate-pulse" />
-              </div>
-            )}
-          </Button>
-        </div>
+      {/* Floating Chat Button - Simplified and more visible */}
+      <div className="fixed bottom-6 right-6 z-[9999]">
+        <Button
+          onClick={() => setIsOpen(!isOpen)}
+          size="lg"
+          className="rounded-full w-16 h-16 shadow-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-110"
+        >
+          {isOpen ? (
+            <X className="w-6 h-6 text-white" />
+          ) : (
+            <MessageCircle className="w-6 h-6 text-white animate-pulse" />
+          )}
+        </Button>
       </div>
 
-      {/* Resizable Chat Window */}
+      {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-40 animate-scale-in">
-          <ResizablePanelGroup
-            direction="vertical"
-            className="w-[400px] h-[500px] rounded-lg border border-primary/20 bg-background/95 backdrop-blur-md shadow-2xl overflow-hidden resize"
-          >
-            <ResizablePanel defaultSize={100} minSize={30}>
-              <ResizablePanelGroup direction="horizontal">
-                <ResizablePanel defaultSize={100} minSize={50}>
-                  <Card className="h-full border-0 bg-transparent flex flex-col">
-                    {/* Enhanced Header with Date/Time Table */}
-                    <div className="relative p-4 border-b border-border bg-gradient-to-r from-primary/10 to-blue-50 rounded-t-lg flex-shrink-0">
-                      {/* Animated background pattern */}
-                      <div className="absolute inset-0 opacity-5">
-                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/20 to-transparent"></div>
-                        <Zap className="absolute top-2 right-8 w-4 h-4 text-primary/30 animate-pulse" />
-                        <Sparkles className="absolute bottom-2 left-8 w-3 h-3 text-blue-500/30 animate-bounce" />
-                      </div>
-                      
-                      {/* Header Content */}
-                      <div className="relative flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-blue-100 rounded-full flex items-center justify-center animate-pulse">
-                            <Bot className="w-5 h-5 text-primary animate-bounce" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-sm flex items-center gap-2">
-                              AI Assistant
-                              <Sparkles className="w-3 h-3 text-yellow-500 animate-pulse" />
-                            </h3>
-                            <p className="text-xs text-muted-foreground">Ask about Shivam's work</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={handleClose}
-                            className="h-8 w-8 p-0 hover:bg-destructive/10 hover:text-destructive transition-colors"
-                          >
-                            <X className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </div>
+        <div className="fixed bottom-24 right-6 z-[9998] w-[400px] h-[500px] animate-scale-in">
+          <Card className="h-full border border-gray-200 bg-white shadow-2xl rounded-lg overflow-hidden flex flex-col">
+            {/* Header */}
+            <div className="p-4 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-purple-50 flex-shrink-0">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
+                    <Bot className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-sm flex items-center gap-2">
+                      AI Assistant
+                      <Sparkles className="w-3 h-3 text-yellow-500" />
+                    </h3>
+                    <p className="text-xs text-gray-600">Ask about Shivam's work</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsOpen(false)}
+                    className="h-8 w-8 p-0 hover:bg-red-100 hover:text-red-600"
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
 
-                      {/* Attractive Date/Time Table */}
-                      <div className="relative bg-gradient-to-r from-background/80 to-primary/5 rounded-lg border border-primary/10 backdrop-blur-sm">
-                        <Table>
-                          <TableBody>
-                            <TableRow className="border-0 hover:bg-transparent">
-                              <TableCell className="p-2 w-1/2">
-                                <div className="flex items-center gap-2 text-xs">
-                                  <Calendar className="w-3 h-3 text-primary animate-pulse" />
-                                  <span className="font-medium text-foreground">{date}</span>
-                                </div>
-                              </TableCell>
-                              <TableCell className="p-2 w-1/2">
-                                <div className="flex items-center gap-2 text-xs">
-                                  <Clock className="w-3 h-3 text-blue-500 animate-pulse" />
-                                  <span className="font-medium text-foreground">{time}</span>
-                                </div>
-                              </TableCell>
-                            </TableRow>
-                          </TableBody>
-                        </Table>
-                      </div>
+              {/* Date/Time Table */}
+              <div className="bg-white/80 rounded-lg border border-gray-100">
+                <Table>
+                  <TableBody>
+                    <TableRow className="border-0">
+                      <TableCell className="p-2 w-1/2">
+                        <div className="flex items-center gap-2 text-xs">
+                          <Calendar className="w-3 h-3 text-blue-600" />
+                          <span className="font-medium">{date}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="p-2 w-1/2">
+                        <div className="flex items-center gap-2 text-xs">
+                          <Clock className="w-3 h-3 text-purple-600" />
+                          <span className="font-medium">{time}</span>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            {/* Messages */}
+            <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex gap-3 ${
+                    message.isBot ? 'justify-start' : 'justify-end'
+                  }`}
+                >
+                  {message.isBot && (
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Bot className="w-4 h-4 text-blue-600" />
                     </div>
-
-                    {/* Messages with enhanced animations */}
-                    <CardContent className="flex-1 overflow-y-auto p-4 space-y-4 relative">
-                      {/* Animated background elements */}
-                      <div className="absolute inset-0 opacity-5 pointer-events-none">
-                        <div className="absolute top-4 right-4 w-8 h-8 border border-primary/20 rounded-full animate-spin"></div>
-                        <div className="absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-r from-primary/10 to-blue-100 rounded-full animate-pulse"></div>
-                      </div>
-
-                      {messages.map((message, index) => (
-                        <div
-                          key={message.id}
-                          className={`flex gap-3 animate-fade-in ${
-                            message.isBot ? 'justify-start' : 'justify-end'
-                          }`}
-                          style={{ animationDelay: `${index * 0.1}s` }}
-                        >
-                          {message.isBot && (
-                            <div className="w-8 h-8 bg-gradient-to-br from-primary/20 to-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1 animate-pulse">
-                              <Bot className="w-4 h-4 text-primary" />
-                            </div>
-                          )}
-                          <div
-                            className={`max-w-[85%] p-3 rounded-2xl text-sm whitespace-pre-line shadow-sm hover-scale transition-all duration-200 ${
-                              message.isBot
-                                ? 'bg-gradient-to-br from-accent to-accent/80 text-accent-foreground border border-primary/10'
-                                : 'bg-gradient-to-br from-primary to-blue-600 text-primary-foreground shadow-lg'
-                            }`}
-                          >
-                            {message.text}
-                          </div>
-                          {!message.isBot && (
-                            <div className="w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
-                              <User className="w-4 h-4 text-primary-foreground" />
-                            </div>
-                          )}
-                        </div>
-                      ))}
-
-                      {/* Enhanced Typing Indicator */}
-                      {isTyping && (
-                        <div className="flex gap-3 animate-fade-in">
-                          <div className="w-8 h-8 bg-gradient-to-br from-primary/20 to-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1 animate-pulse">
-                            <Bot className="w-4 h-4 text-primary animate-bounce" />
-                          </div>
-                          <div className="bg-gradient-to-br from-accent to-accent/80 p-3 rounded-2xl border border-primary/10 shadow-sm">
-                            <div className="flex gap-1">
-                              <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"></div>
-                              <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                              <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                      <div ref={messagesEndRef} />
-                    </CardContent>
-
-                    {/* Enhanced Input */}
-                    <div className="p-4 border-t border-border bg-gradient-to-r from-background to-primary/5 flex-shrink-0">
-                      <div className="relative flex gap-2">
-                        <div className="flex-1 relative">
-                          <input
-                            type="text"
-                            value={inputValue}
-                            onChange={(e) => setInputValue(e.target.value)}
-                            onKeyPress={handleKeyPress}
-                            placeholder="Ask about projects, skills..."
-                            className="w-full px-4 py-3 text-sm border border-border rounded-xl bg-background/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 hover:bg-background"
-                          />
-                          <Sparkles className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground/50 animate-pulse" />
-                        </div>
-                        <Button
-                          onClick={handleSendMessage}
-                          size="sm"
-                          disabled={!inputValue.trim() || isTyping}
-                          className="h-12 w-12 rounded-xl hover-scale bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                          <Send className="w-4 h-4" />
-                        </Button>
-                      </div>
+                  )}
+                  <div
+                    className={`max-w-[85%] p-3 rounded-2xl text-sm whitespace-pre-line ${
+                      message.isBot
+                        ? 'bg-gray-100 text-gray-800'
+                        : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+                    }`}
+                  >
+                    {message.text}
+                  </div>
+                  {!message.isBot && (
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <User className="w-4 h-4 text-white" />
                     </div>
-                  </Card>
-                </ResizablePanel>
-                
-                {/* Horizontal resize handle */}
-                <ResizableHandle withHandle className="w-2 bg-primary/10 hover:bg-primary/20 transition-colors" />
-              </ResizablePanelGroup>
-            </ResizablePanel>
-            
-            {/* Vertical resize handle */}
-            <ResizableHandle withHandle className="h-2 bg-primary/10 hover:bg-primary/20 transition-colors" />
-          </ResizablePanelGroup>
+                  )}
+                </div>
+              ))}
+
+              {/* Typing Indicator */}
+              {isTyping && (
+                <div className="flex gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Bot className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div className="bg-gray-100 p-3 rounded-2xl">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </CardContent>
+
+            {/* Input */}
+            <div className="p-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Ask about projects, skills..."
+                  className="flex-1 px-4 py-3 text-sm border border-gray-300 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+                <Button
+                  onClick={handleSendMessage}
+                  size="sm"
+                  disabled={!inputValue.trim() || isTyping}
+                  className="h-12 w-12 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50"
+                >
+                  <Send className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          </Card>
         </div>
       )}
     </>
