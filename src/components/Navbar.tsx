@@ -22,7 +22,15 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
-            <a href="#home" className="text-2xl font-bold text-primary hover:text-primary/80 transition-all duration-300 hover:scale-105 animate-scale-in">
+            <a href="#home" className="flex items-center space-x-3 text-2xl font-bold text-primary hover:text-primary/80 transition-all duration-300 hover:scale-105 animate-scale-in">
+              <img 
+                src="/lovable-uploads/6311f9ad-7e3b-401a-8877-66fa9f2bceb4.png" 
+                alt="Shivam Kadavla Logo" 
+                className="w-10 h-10 animate-spin-slow hover:animate-pulse transition-all duration-300"
+                style={{
+                  animation: 'float 3s ease-in-out infinite, spin 8s linear infinite'
+                }}
+              />
               <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate-fade-in">
                 Shivam Kadavla
               </span>
