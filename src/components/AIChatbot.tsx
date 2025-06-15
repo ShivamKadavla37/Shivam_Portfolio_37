@@ -1,6 +1,5 @@
-
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -162,84 +161,124 @@ Check out his blog section for insights and learnings!`;
     }
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       {/* Floating Chat Button */}
       <div className="fixed bottom-6 right-6 z-50">
-        <Button
-          onClick={() => setIsOpen(!isOpen)}
-          size="lg"
-          className={`rounded-full w-14 h-14 shadow-2xl hover-scale transition-all duration-300 ${
-            isOpen ? 'bg-destructive hover:bg-destructive/90' : 'bg-primary hover:bg-primary/90'
-          }`}
-        >
-          {isOpen ? (
-            <X className="w-6 h-6 animate-scale-in" />
-          ) : (
-            <MessageCircle className="w-6 h-6 animate-bounce" />
-          )}
-        </Button>
+        <div className="relative">
+          {/* Animated rings around the button */}
+          <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping"></div>
+          <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse"></div>
+          
+          <Button
+            onClick={() => setIsOpen(!isOpen)}
+            size="lg"
+            className={`relative rounded-full w-16 h-16 shadow-2xl hover-scale transition-all duration-300 ${
+              isOpen ? 'bg-destructive hover:bg-destructive/90' : 'bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700'
+            }`}
+          >
+            {isOpen ? (
+              <X className="w-6 h-6 animate-scale-in" />
+            ) : (
+              <div className="relative">
+                <MessageCircle className="w-6 h-6 animate-bounce" />
+                <Sparkles className="w-3 h-3 absolute -top-1 -right-1 text-yellow-300 animate-pulse" />
+              </div>
+            )}
+          </Button>
+        </div>
       </div>
 
       {/* Chat Window */}
       {isOpen && (
         <div className="fixed bottom-24 right-6 w-80 h-96 z-40 animate-scale-in">
-          <Card className="h-full shadow-2xl border-primary/20 bg-background/95 backdrop-blur-md">
+          <Card className="h-full shadow-2xl border-primary/20 bg-background/95 backdrop-blur-md overflow-hidden">
             <div className="flex flex-col h-full">
-              {/* Header */}
-              <div className="flex items-center gap-3 p-4 border-b border-border bg-primary/5 rounded-t-lg">
-                <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
-                  <Bot className="w-4 h-4 text-primary" />
+              {/* Enhanced Header */}
+              <div className="relative flex items-center gap-3 p-4 border-b border-border bg-gradient-to-r from-primary/10 to-blue-50 rounded-t-lg">
+                {/* Animated background pattern */}
+                <div className="absolute inset-0 opacity-5">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/20 to-transparent"></div>
+                  <Zap className="absolute top-2 right-8 w-4 h-4 text-primary/30 animate-pulse" />
+                  <Sparkles className="absolute bottom-2 left-8 w-3 h-3 text-blue-500/30 animate-bounce" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-sm">AI Assistant</h3>
+                
+                <div className="relative w-10 h-10 bg-gradient-to-br from-primary/20 to-blue-100 rounded-full flex items-center justify-center animate-pulse">
+                  <Bot className="w-5 h-5 text-primary animate-bounce" />
+                </div>
+                <div className="flex-1 relative">
+                  <h3 className="font-semibold text-sm flex items-center gap-2">
+                    AI Assistant
+                    <Sparkles className="w-3 h-3 text-yellow-500 animate-pulse" />
+                  </h3>
                   <p className="text-xs text-muted-foreground">Ask about Shivam's work</p>
                 </div>
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleClose}
+                    className="h-8 w-8 p-0 hover:bg-destructive/10 hover:text-destructive transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
 
-              {/* Messages */}
-              <CardContent className="flex-1 overflow-y-auto p-4 space-y-3">
-                {messages.map((message) => (
+              {/* Messages with enhanced animations */}
+              <CardContent className="flex-1 overflow-y-auto p-4 space-y-4 relative">
+                {/* Animated background elements */}
+                <div className="absolute inset-0 opacity-5 pointer-events-none">
+                  <div className="absolute top-4 right-4 w-8 h-8 border border-primary/20 rounded-full animate-spin"></div>
+                  <div className="absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-r from-primary/10 to-blue-100 rounded-full animate-pulse"></div>
+                </div>
+
+                {messages.map((message, index) => (
                   <div
                     key={message.id}
-                    className={`flex gap-2 animate-fade-in ${
+                    className={`flex gap-3 animate-fade-in ${
                       message.isBot ? 'justify-start' : 'justify-end'
                     }`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {message.isBot && (
-                      <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <Bot className="w-3 h-3 text-primary" />
+                      <div className="w-8 h-8 bg-gradient-to-br from-primary/20 to-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1 animate-pulse">
+                        <Bot className="w-4 h-4 text-primary" />
                       </div>
                     )}
                     <div
-                      className={`max-w-[85%] p-3 rounded-lg text-sm whitespace-pre-line ${
+                      className={`max-w-[85%] p-3 rounded-2xl text-sm whitespace-pre-line shadow-sm hover-scale transition-all duration-200 ${
                         message.isBot
-                          ? 'bg-accent text-accent-foreground'
-                          : 'bg-primary text-primary-foreground'
+                          ? 'bg-gradient-to-br from-accent to-accent/80 text-accent-foreground border border-primary/10'
+                          : 'bg-gradient-to-br from-primary to-blue-600 text-primary-foreground shadow-lg'
                       }`}
                     >
                       {message.text}
                     </div>
                     {!message.isBot && (
-                      <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <User className="w-3 h-3 text-primary-foreground" />
+                      <div className="w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                        <User className="w-4 h-4 text-primary-foreground" />
                       </div>
                     )}
                   </div>
                 ))}
 
-                {/* Typing Indicator */}
+                {/* Enhanced Typing Indicator */}
                 {isTyping && (
-                  <div className="flex gap-2 animate-fade-in">
-                    <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Bot className="w-3 h-3 text-primary" />
+                  <div className="flex gap-3 animate-fade-in">
+                    <div className="w-8 h-8 bg-gradient-to-br from-primary/20 to-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1 animate-pulse">
+                      <Bot className="w-4 h-4 text-primary animate-bounce" />
                     </div>
-                    <div className="bg-accent p-3 rounded-lg">
+                    <div className="bg-gradient-to-br from-accent to-accent/80 p-3 rounded-2xl border border-primary/10 shadow-sm">
                       <div className="flex gap-1">
-                        <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
                       </div>
                     </div>
                   </div>
@@ -247,22 +286,25 @@ Check out his blog section for insights and learnings!`;
                 <div ref={messagesEndRef} />
               </CardContent>
 
-              {/* Input */}
-              <div className="p-4 border-t border-border">
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder="Ask about projects, skills..."
-                    className="flex-1 px-3 py-2 text-sm border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  />
+              {/* Enhanced Input */}
+              <div className="p-4 border-t border-border bg-gradient-to-r from-background to-primary/5">
+                <div className="relative flex gap-2">
+                  <div className="flex-1 relative">
+                    <input
+                      type="text"
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Ask about projects, skills..."
+                      className="w-full px-4 py-3 text-sm border border-border rounded-xl bg-background/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 hover:bg-background"
+                    />
+                    <Sparkles className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground/50 animate-pulse" />
+                  </div>
                   <Button
                     onClick={handleSendMessage}
                     size="sm"
                     disabled={!inputValue.trim() || isTyping}
-                    className="hover-scale"
+                    className="h-12 w-12 rounded-xl hover-scale bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="w-4 h-4" />
                   </Button>
