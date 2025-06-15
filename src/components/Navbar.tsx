@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -23,13 +23,11 @@ const Navbar = () => {
           {/* Logo/Brand */}
           <div className="flex-shrink-0">
             <a href="#home" className="flex items-center space-x-3 text-2xl font-bold text-primary hover:text-primary/80 transition-all duration-300 hover:scale-105 animate-scale-in">
-              <img 
-                src="/lovable-uploads/6311f9ad-7e3b-401a-8877-66fa9f2bceb4.png" 
-                alt="Shivam Kadavla Logo" 
-                className="w-8 h-8 filter brightness-0 invert-0 dark:invert opacity-80 hover:opacity-100 transition-all duration-300"
+              <Bot 
+                size={32}
+                className="text-primary hover:text-primary/80 transition-all duration-300"
                 style={{
-                  animation: 'float 3s ease-in-out infinite',
-                  filter: 'brightness(0) saturate(100%) invert(11%) sepia(84%) saturate(1352%) hue-rotate(222deg) brightness(92%) contrast(98%)'
+                  animation: 'float 3s ease-in-out infinite'
                 }}
               />
               <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate-fade-in">
