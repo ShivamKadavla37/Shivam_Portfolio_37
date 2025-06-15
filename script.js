@@ -1,5 +1,4 @@
-
-// Portfolio JavaScript - All functionality preserved from React version
+// Portfolio JavaScript - All functionality preserved with new AI chat and improved scroll button
 
 // Global variables
 let showAllProjects = false;
@@ -7,6 +6,7 @@ let selectedBlogCategory = 'All';
 let typingTextIndex = 0;
 let typingCharIndex = 0;
 let isDeleting = false;
+let isChatOpen = false;
 
 // Data
 const projects = [
@@ -274,6 +274,17 @@ const typingTexts = [
     'AI Enthusiast',
     'Problem Solver',
     'Code Architect'
+];
+
+// AI Chat responses
+const aiResponses = [
+    "Hi! I'm Shivam's AI assistant. I can help you learn more about his work and experience.",
+    "Shivam is a passionate full-stack developer with 5+ years of experience in modern web technologies.",
+    "He specializes in React, Node.js, AI integration, and cloud architecture.",
+    "Would you like to know about his latest projects or technical expertise?",
+    "Feel free to ask about his experience with AI, web development, or any specific technologies!",
+    "Shivam has worked on projects serving 100K+ users and loves solving complex technical challenges.",
+    "You can check out his portfolio projects or download his resume for more details!"
 ];
 
 function typeText() {
@@ -685,6 +696,110 @@ SKILLS:
     window.URL.revokeObjectURL(url);
 }
 
+// AI Chat Functions
+function toggleAIChat() {
+    const chatBoard = document.getElementById('ai-chat-board');
+    const chatToggle = document.getElementById('ai-chat-toggle');
+    
+    isChatOpen = !isChatOpen;
+    
+    if (isChatOpen) {
+        chatBoard.classList.remove('hidden');
+        chatToggle.style.transform = 'scale(0.9)';
+    } else {
+        chatBoard.classList.add('hidden');
+        chatToggle.style.transform = 'scale(1)';
+    }
+}
+
+function addMessageToChat(message, isUser = false) {
+    const messagesContainer = document.getElementById('ai-chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `ai-message ${isUser ? 'user-message' : ''}`;
+    
+    if (isUser) {
+        messageDiv.innerHTML = `
+            <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-2">
+                <i data-lucide="user" class="w-3 h-3 text-primary-foreground"></i>
+            </div>
+            <div class="ai-message-content">
+                <p>${message}</p>
+            </div>
+        `;
+    } else {
+        messageDiv.innerHTML = `
+            <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-2">
+                <i data-lucide="bot" class="w-3 h-3 text-primary-foreground"></i>
+            </div>
+            <div class="ai-message-content">
+                <p>${message}</p>
+            </div>
+        `;
+    }
+    
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+function showTypingIndicator() {
+    const messagesContainer = document.getElementById('ai-chat-messages');
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'ai-message typing-indicator-message';
+    typingDiv.innerHTML = `
+        <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-2">
+            <i data-lucide="bot" class="w-3 h-3 text-primary-foreground"></i>
+        </div>
+        <div class="ai-message-content">
+            <div class="typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+    `;
+    
+    messagesContainer.appendChild(typingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    return typingDiv;
+}
+
+function removeTypingIndicator() {
+    const typingIndicator = document.querySelector('.typing-indicator-message');
+    if (typingIndicator) {
+        typingIndicator.remove();
+    }
+}
+
+function sendAIMessage() {
+    const input = document.getElementById('ai-message-input');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    // Add user message
+    addMessageToChat(message, true);
+    input.value = '';
+    
+    // Show typing indicator
+    const typingIndicator = showTypingIndicator();
+    
+    // Simulate AI response delay
+    setTimeout(() => {
+        removeTypingIndicator();
+        const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+        addMessageToChat(randomResponse);
+    }, 1000 + Math.random() * 2000);
+}
+
 // Form handling
 function handleContactForm(event) {
     event.preventDefault();
@@ -805,6 +920,23 @@ function setupScrollToTop() {
     });
 }
 
+function setupAIChat() {
+    const chatToggle = document.getElementById('ai-chat-toggle');
+    const chatClose = document.getElementById('ai-chat-close');
+    const sendBtn = document.getElementById('ai-send-btn');
+    const messageInput = document.getElementById('ai-message-input');
+    
+    chatToggle.addEventListener('click', toggleAIChat);
+    chatClose.addEventListener('click', toggleAIChat);
+    sendBtn.addEventListener('click', sendAIMessage);
+    
+    messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendAIMessage();
+        }
+    });
+}
+
 // Animation observers
 function setupAnimationObservers() {
     const observerOptions = {
@@ -855,11 +987,11 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSmoothScrolling();
     setupMobileMenu();
     setupScrollToTop();
+    setupAIChat();
     setupAnimationObservers();
     
     // Setup event listeners
     document.getElementById('toggle-projects-btn').addEventListener('click', toggleProjects);
-    document.getElementById('download-resume-btn').addEventListener('click', downloadResume);
     document.getElementById('download-resume-hero').addEventListener('click', downloadResume);
     document.getElementById('contact-form').addEventListener('submit', handleContactForm);
     document.getElementById('newsletter-form').addEventListener('submit', handleNewsletterForm);
@@ -869,7 +1001,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lucide.createIcons();
     }
     
-    console.log('Portfolio initialized successfully!');
+    console.log('Portfolio with AI chat initialized successfully!');
 });
 
 // Export functions for global access

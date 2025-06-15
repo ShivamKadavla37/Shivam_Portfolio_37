@@ -5,281 +5,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivam Kadavla - Portfolio</title>
-    <meta name="description" content="Full-Stack Developer & AI Enthusiast Portfolio">
-    <meta name="author" content="Shivam Kadavla">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
-<body class="bg-background text-foreground min-h-screen">
+<body>
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border animate-fade-in">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo/Brand -->
-                <div class="flex-shrink-0">
-                    <a href="#home" class="text-2xl font-bold text-primary hover:text-primary/80 transition-all duration-300 hover:scale-105 animate-scale-in">
-                        <span class="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate-fade-in">
-                            Shivam Kadavla
-                        </span>
-                    </a>
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-primary">Shivam Kadavla</div>
                 </div>
-
+                
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home" class="nav-link text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-accent hover:scale-105 story-link animate-fade-in">Home</a>
-                        <a href="#about" class="nav-link text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-accent hover:scale-105 story-link animate-fade-in">About</a>
-                        <a href="#projects" class="nav-link text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-accent hover:scale-105 story-link animate-fade-in">Projects</a>
-                        <a href="#skills" class="nav-link text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-accent hover:scale-105 story-link animate-fade-in">Skills</a>
-                        <a href="#resume" class="nav-link text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-accent hover:scale-105 story-link animate-fade-in">Resume</a>
-                        <a href="#blog" class="nav-link text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-accent hover:scale-105 story-link animate-fade-in">Blog</a>
-                        <a href="#contact" class="nav-link text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:bg-accent hover:scale-105 story-link animate-fade-in">Contact</a>
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-foreground hover:text-primary transition-colors">Home</a>
+                        <a href="#about" class="text-foreground hover:text-primary transition-colors">About</a>
+                        <a href="#projects" class="text-foreground hover:text-primary transition-colors">Projects</a>
+                        <a href="#skills" class="text-foreground hover:text-primary transition-colors">Skills</a>
+                        <a href="#blog" class="text-foreground hover:text-primary transition-colors">Blog</a>
+                        <a href="#resume" class="text-foreground hover:text-primary transition-colors">Resume</a>
+                        <a href="#contact" class="text-foreground hover:text-primary transition-colors">Contact</a>
                     </div>
                 </div>
-
-                <!-- CTA Button -->
-                <div class="hidden md:block">
-                    <button class="btn-primary hover-scale animate-scale-in transition-all duration-300 hover:shadow-lg bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium">
-                        Hire Me
-                    </button>
-                </div>
-
+                
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="hover-scale transition-all duration-300 p-2 rounded-md text-foreground hover:text-primary hover:bg-accent">
+                    <button id="mobile-menu-btn" class="text-foreground hover:text-primary">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
-
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="md:hidden hidden animate-slide-in-right">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border animate-fade-in">
-                    <a href="#home" class="mobile-nav-link text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:bg-accent hover:translate-x-2 animate-fade-in">Home</a>
-                    <a href="#about" class="mobile-nav-link text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:bg-accent hover:translate-x-2 animate-fade-in">About</a>
-                    <a href="#projects" class="mobile-nav-link text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:bg-accent hover:translate-x-2 animate-fade-in">Projects</a>
-                    <a href="#skills" class="mobile-nav-link text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:bg-accent hover:translate-x-2 animate-fade-in">Skills</a>
-                    <a href="#resume" class="mobile-nav-link text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:bg-accent hover:translate-x-2 animate-fade-in">Resume</a>
-                    <a href="#blog" class="mobile-nav-link text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:bg-accent hover:translate-x-2 animate-fade-in">Blog</a>
-                    <a href="#contact" class="mobile-nav-link text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 hover:bg-accent hover:translate-x-2 animate-fade-in">Contact</a>
-                    <div class="pt-4 pb-2 animate-fade-in">
-                        <button class="w-full btn-primary hover-scale transition-all duration-300 bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium">
-                            Hire Me
-                        </button>
-                    </div>
-                </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-background border-t border-border">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="mobile-nav-link block px-3 py-2 text-foreground hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="mobile-nav-link block px-3 py-2 text-foreground hover:text-primary transition-colors">About</a>
+                <a href="#projects" class="mobile-nav-link block px-3 py-2 text-foreground hover:text-primary transition-colors">Projects</a>
+                <a href="#skills" class="mobile-nav-link block px-3 py-2 text-foreground hover:text-primary transition-colors">Skills</a>
+                <a href="#blog" class="mobile-nav-link block px-3 py-2 text-foreground hover:text-primary transition-colors">Blog</a>
+                <a href="#resume" class="mobile-nav-link block px-3 py-2 text-foreground hover:text-primary transition-colors">Resume</a>
+                <a href="#contact" class="mobile-nav-link block px-3 py-2 text-foreground hover:text-primary transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-accent/10">
-        <!-- Animated Background Elements -->
-        <div class="absolute inset-0">
-            <!-- Grid Pattern -->
-            <div class="absolute inset-0 bg-grid-pattern animate-pulse"></div>
-            
-            <!-- Floating Icons -->
-            <div class="floating-icon absolute opacity-20" style="left: 20%; top: 30%; animation-delay: 0s; animation-duration: 6s;">
-                <i data-lucide="code" class="w-8 h-8 text-primary"></i>
-            </div>
-            <div class="floating-icon absolute opacity-20" style="left: 40%; top: 45%; animation-delay: 1s; animation-duration: 7s;">
-                <i data-lucide="database" class="w-8 h-8 text-primary"></i>
-            </div>
-            <div class="floating-icon absolute opacity-20" style="left: 60%; top: 60%; animation-delay: 2s; animation-duration: 8s;">
-                <i data-lucide="cpu" class="w-8 h-8 text-primary"></i>
-            </div>
-            <div class="floating-icon absolute opacity-20" style="left: 80%; top: 30%; animation-delay: 0.5s; animation-duration: 6.5s;">
-                <i data-lucide="brain" class="w-8 h-8 text-primary"></i>
-            </div>
-
-            <!-- Glowing Orbs -->
-            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="container mx-auto px-4 z-10">
-            <div class="text-center space-y-8 animate-fade-in">
-                <!-- Profile Photo -->
-                <div class="relative mx-auto w-48 h-48 animate-scale-in" style="animation-delay: 0.2s;">
-                    <div class="w-full h-full border-4 border-primary/20 shadow-2xl rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-6xl font-bold text-primary-foreground">
-                        SK
-                    </div>
-                    <!-- Glowing Ring Animation -->
-                    <div class="absolute inset-0 rounded-full border-2 border-primary/30 animate-pulse"></div>
-                    <div class="absolute inset-0 rounded-full border border-primary/20 animate-ping" style="animation-delay: 0.5s;"></div>
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-accent/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="animate-fade-in">
+                <div class="w-32 h-32 mx-auto mb-8 relative">
+                    <img 
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" 
+                        alt="Shivam Kadavla"
+                        class="w-full h-full rounded-full object-cover border-4 border-primary/20 shadow-xl hover-scale transition-all duration-500"
+                    />
+                    <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-background"></div>
                 </div>
-
-                <!-- Name and Title -->
-                <div class="space-y-4">
-                    <h1 class="text-5xl md:text-7xl font-bold animate-fade-in" style="animation-delay: 0.4s;">
-                        <span class="bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent">
-                            Shivam Kadavla
-                        </span>
-                    </h1>
-                    
-                    <div class="h-12 flex items-center justify-center">
-                        <p id="typed-text" class="text-xl md:text-2xl text-muted-foreground font-medium animate-fade-in" style="animation-delay: 0.6s;">
-                            <span class="inline-block border-r-2 border-primary animate-pulse">
-                                Full-Stack Developer
-                            </span>
-                        </p>
-                    </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    Hi, I'm <span class="bg-gradient-to-r text-primary">Shivam</span>
+                </h1>
+                <div id="typed-text" class="text-2xl md:text-3xl text-muted-foreground mb-8 h-12">
+                    I'm a <span class="text-primary font-semibold"></span><span class="typing-cursor">|</span>
                 </div>
-
-                <!-- Description -->
-                <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.8s;">
-                    Crafting innovative solutions with cutting-edge technology. 
-                    Passionate about AI, full-stack development, and creating 
-                    digital experiences that make a difference.
+                <p class="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Passionate about creating exceptional digital experiences through innovative web development and AI integration.
                 </p>
-
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style="animation-delay: 1s;">
-                    <button class="btn-primary hover-scale bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300 px-6 py-3 rounded-md text-primary-foreground font-medium">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button class="btn-primary px-8 py-3 rounded-lg text-lg hover-scale transition-all duration-300" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                        <i data-lucide="rocket" class="w-5 h-5 mr-2 inline"></i>
                         View My Work
                     </button>
-                    <button id="download-resume-hero" class="btn-outline hover-scale transition-all duration-300 px-6 py-3 rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium">
+                    <button id="download-resume-hero" class="btn-outline px-8 py-3 rounded-lg text-lg hover-scale transition-all duration-300">
+                        <i data-lucide="download" class="w-5 h-5 mr-2 inline"></i>
                         Download Resume
                     </button>
                 </div>
-
-                <!-- Scroll Indicator -->
-                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                    <i data-lucide="chevron-down" class="w-8 h-8 text-muted-foreground"></i>
-                </div>
             </div>
         </div>
+        
+        <!-- Floating elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full floating-icon" style="animation-duration: 6s;"></div>
+        <div class="absolute bottom-20 right-10 w-16 h-16 bg-accent/10 rounded-full floating-icon" style="animation-duration: 8s; animation-delay: -2s;"></div>
+        <div class="absolute top-1/2 left-20 w-12 h-12 bg-primary/5 rounded-full floating-icon" style="animation-duration: 10s; animation-delay: -4s;"></div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="min-h-screen py-20 bg-gradient-to-b from-background to-accent/5">
+    <section id="about" class="py-20 bg-accent/5">
         <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-16 animate-fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            About Me
-                        </span>
-                    </h2>
-                    <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    I'm a passionate full-stack developer with expertise in modern web technologies and AI integration.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=600&h=400&fit=crop" 
+                        alt="About me"
+                        class="rounded-lg shadow-2xl hover-scale transition-all duration-500"
+                    />
                 </div>
-
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <!-- Left Column - Text Content -->
-                    <div class="space-y-6 animate-fade-in" style="animation-delay: 0.2s;">
-                        <div class="space-y-4">
-                            <h3 class="text-2xl font-semibold text-primary">
-                                Passionate Software Developer
-                            </h3>
-                            <p class="text-lg text-muted-foreground leading-relaxed">
-                                I'm a dedicated software developer with a passion for creating 
-                                innovative solutions that bridge the gap between complex technology 
-                                and user-friendly experiences. My journey in tech began with curiosity 
-                                and has evolved into a deep expertise in full-stack development.
-                            </p>
-                            <p class="text-lg text-muted-foreground leading-relaxed">
-                                With a strong foundation in modern web technologies and a keen 
-                                interest in artificial intelligence, I specialize in building 
-                                scalable applications that not only meet today's needs but are 
-                                ready for tomorrow's challenges.
-                            </p>
+                
+                <div class="space-y-6 animate-slide-in-right">
+                    <h3 class="text-2xl font-semibold text-primary">Crafting Digital Experiences</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        With over 5 years of experience in full-stack development, I specialize in creating 
+                        scalable web applications that combine beautiful design with powerful functionality. 
+                        My expertise spans from React and Node.js to AI integration and cloud architecture.
+                    </p>
+                    <p class="text-muted-foreground leading-relaxed">
+                        I'm passionate about staying at the forefront of technology, constantly learning new 
+                        frameworks and tools to deliver innovative solutions that exceed expectations.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="stat-card">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects Completed</div>
                         </div>
-
-                        <!-- Stats -->
-                        <div class="grid grid-cols-2 gap-6 pt-6">
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-primary mb-2">50+</div>
-                                <div class="text-muted-foreground">Projects Completed</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-primary mb-2">3+</div>
-                                <div class="text-muted-foreground">Years Experience</div>
-                            </div>
+                        <div class="stat-card">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years Experience</div>
                         </div>
-                    </div>
-
-                    <!-- Right Column - Highlights Cards -->
-                    <div class="grid gap-6">
-                        <div class="card hover-scale transition-all duration-300 hover:shadow-lg border border-border/50 rounded-lg p-6 animate-fade-in" style="animation-delay: 0.4s;">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="code-2" class="w-6 h-6 text-primary"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-semibold mb-2">Clean Code</h4>
-                                    <p class="text-muted-foreground">Writing maintainable, scalable code that stands the test of time.</p>
-                                </div>
-                            </div>
+                        <div class="stat-card">
+                            <div class="stat-number">100K+</div>
+                            <div class="stat-label">Users Served</div>
                         </div>
-
-                        <div class="card hover-scale transition-all duration-300 hover:shadow-lg border border-border/50 rounded-lg p-6 animate-fade-in" style="animation-delay: 0.5s;">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="lightbulb" class="w-6 h-6 text-primary"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-semibold mb-2">Innovation</h4>
-                                    <p class="text-muted-foreground">Always exploring new technologies and creative solutions.</p>
-                                </div>
-                            </div>
+                        <div class="stat-card">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Technologies</div>
                         </div>
-
-                        <div class="card hover-scale transition-all duration-300 hover:shadow-lg border border-border/50 rounded-lg p-6 animate-fade-in" style="animation-delay: 0.6s;">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="rocket" class="w-6 h-6 text-primary"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-semibold mb-2">Performance</h4>
-                                    <p class="text-muted-foreground">Building fast, efficient applications that users love.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card hover-scale transition-all duration-300 hover:shadow-lg border border-border/50 rounded-lg p-6 animate-fade-in" style="animation-delay: 0.7s;">
-                            <div class="flex items-start space-x-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="users" class="w-6 h-6 text-primary"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-semibold mb-2">Collaboration</h4>
-                                    <p class="text-muted-foreground">Working effectively with teams to deliver exceptional results.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Technologies Section -->
-                <div class="mt-20 text-center animate-fade-in" style="animation-delay: 0.8s;">
-                    <h3 class="text-2xl font-semibold mb-8">Technologies I Love</h3>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <span class="px-4 py-2 bg-accent/20 rounded-full text-sm font-medium hover-scale transition-all duration-300 animate-fade-in">React</span>
-                        <span class="px-4 py-2 bg-accent/20 rounded-full text-sm font-medium hover-scale transition-all duration-300 animate-fade-in">TypeScript</span>
-                        <span class="px-4 py-2 bg-accent/20 rounded-full text-sm font-medium hover-scale transition-all duration-300 animate-fade-in">Node.js</span>
-                        <span class="px-4 py-2 bg-accent/20 rounded-full text-sm font-medium hover-scale transition-all duration-300 animate-fade-in">Python</span>
-                        <span class="px-4 py-2 bg-accent/20 rounded-full text-sm font-medium hover-scale transition-all duration-300 animate-fade-in">AI/ML</span>
-                        <span class="px-4 py-2 bg-accent/20 rounded-full text-sm font-medium hover-scale transition-all duration-300 animate-fade-in">PostgreSQL</span>
-                        <span class="px-4 py-2 bg-accent/20 rounded-full text-sm font-medium hover-scale transition-all duration-300 animate-fade-in">Docker</span>
-                        <span class="px-4 py-2 bg-accent/20 rounded-full text-sm font-medium hover-scale transition-all duration-300 animate-fade-in">AWS</span>
                     </div>
                 </div>
             </div>
@@ -287,487 +149,389 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="min-h-screen py-20 bg-gradient-to-b from-accent/5 to-background">
+    <section id="projects" class="py-20">
         <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-16 animate-fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            Featured Projects
-                        </span>
-                    </h2>
-                    <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
-                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Showcasing innovative solutions and cutting-edge technologies
-                    </p>
-                </div>
-
-                <!-- Projects Grid -->
-                <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Projects will be loaded here by JavaScript -->
-                </div>
-
-                <!-- View All Projects Button -->
-                <div class="text-center mt-12 animate-fade-in" style="animation-delay: 0.8s;">
-                    <button id="toggle-projects-btn" class="btn-outline hover-scale px-6 py-3 rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium transition-all duration-300">
-                        <i data-lucide="code-2" class="w-4 h-4 mr-2 inline"></i>
-                        View All Projects
-                    </button>
-                </div>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    A showcase of my recent work in web development, AI integration, and full-stack applications.
+                </p>
+            </div>
+            
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+            
+            <div class="text-center">
+                <button id="toggle-projects-btn" class="btn-primary px-8 py-3 rounded-lg text-lg hover-scale transition-all duration-300">
+                    <i data-lucide="code-2" class="w-4 h-4 mr-2 inline"></i>
+                    View All Projects
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="min-h-screen py-20">
+    <section id="skills" class="py-20 bg-accent/5">
         <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-16 animate-fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            Skills & Expertise
-                        </span>
-                    </h2>
-                    <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
-                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Comprehensive technical skills across the full development stack
-                    </p>
-                </div>
-
-                <!-- Skills Grid -->
-                <div id="skills-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                    <!-- Skills will be loaded here by JavaScript -->
-                </div>
-
-                <!-- Tools Section -->
-                <div class="text-center animate-fade-in" style="animation-delay: 0.8s;">
-                    <h3 class="text-2xl font-semibold mb-8">Tools & Technologies</h3>
-                    <div id="tools-grid" class="flex flex-wrap justify-center gap-6">
-                        <!-- Tools will be loaded here by JavaScript -->
-                    </div>
-                </div>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Skills & Expertise</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Proficient in a wide range of technologies and frameworks for building modern web applications.
+                </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="min-h-screen py-20 bg-gradient-to-b from-background to-accent/5">
-        <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-16 animate-fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            Resume
-                        </span>
-                    </h2>
-                    <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
-                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-                        Professional journey and achievements in software development
-                    </p>
-                    <button id="download-resume-btn" class="btn-primary hover-scale animate-fade-in bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium transition-all duration-300">
-                        <i data-lucide="download" class="w-4 h-4 mr-2 inline"></i>
-                        Download Resume
-                    </button>
-                </div>
-
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <!-- Left Column - Experience -->
-                    <div class="lg:col-span-2 space-y-8">
-                        <!-- Professional Experience -->
-                        <div class="animate-fade-in" style="animation-delay: 0.3s;">
-                            <div class="flex items-center mb-6">
-                                <i data-lucide="briefcase" class="w-6 h-6 text-primary mr-3"></i>
-                                <h3 class="text-2xl font-semibold">Professional Experience</h3>
-                            </div>
-                            
-                            <div id="experience-list" class="space-y-6">
-                                <!-- Experience items will be loaded here -->
-                            </div>
-                        </div>
-
-                        <!-- Education -->
-                        <div class="animate-fade-in" style="animation-delay: 0.6s;">
-                            <div class="flex items-center mb-6">
-                                <i data-lucide="graduation-cap" class="w-6 h-6 text-primary mr-3"></i>
-                                <h3 class="text-2xl font-semibold">Education</h3>
-                            </div>
-                            
-                            <div id="education-list" class="space-y-4">
-                                <!-- Education items will be loaded here -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Column - Certifications & Stats -->
-                    <div class="space-y-8">
-                        <!-- Certifications -->
-                        <div class="animate-fade-in" style="animation-delay: 0.5s;">
-                            <div class="flex items-center mb-6">
-                                <i data-lucide="award" class="w-6 h-6 text-primary mr-3"></i>
-                                <h3 class="text-xl font-semibold">Certifications</h3>
-                            </div>
-                            
-                            <div class="card hover-scale transition-all duration-300 border border-border/50 rounded-lg p-6">
-                                <div id="certifications-list" class="space-y-4">
-                                    <!-- Certifications will be loaded here -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Quick Stats -->
-                        <div class="animate-fade-in" style="animation-delay: 0.7s;">
-                            <h3 class="text-xl font-semibold mb-6">Quick Stats</h3>
-                            <div class="card hover-scale transition-all duration-300 border border-border/50 rounded-lg p-6">
-                                <div class="space-y-4">
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold text-primary mb-1">5+</div>
-                                        <div class="text-sm text-muted-foreground">Years Experience</div>
-                                    </div>
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold text-primary mb-1">50+</div>
-                                        <div class="text-sm text-muted-foreground">Projects Completed</div>
-                                    </div>
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold text-primary mb-1">20+</div>
-                                        <div class="text-sm text-muted-foreground">Technologies Mastered</div>
-                                    </div>
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold text-primary mb-1">10+</div>
-                                        <div class="text-sm text-muted-foreground">Team Members Mentored</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            
+            <div id="skills-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Skills will be dynamically inserted here -->
+            </div>
+            
+            <div class="text-center">
+                <h3 class="text-2xl font-semibold mb-8">Tools & Technologies</h3>
+                <div id="tools-grid" class="flex flex-wrap justify-center gap-8">
+                    <!-- Tools will be dynamically inserted here -->
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Blog Section -->
-    <section id="blog" class="min-h-screen py-20">
+    <section id="blog" class="py-20">
         <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-16 animate-fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            Blog & Insights
-                        </span>
-                    </h2>
-                    <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
-                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Sharing knowledge, insights, and experiences from the world of software development
-                    </p>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Latest Blog Posts</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Insights, tutorials, and thoughts on web development, AI, and technology trends.
+                </p>
+            </div>
+            
+            <!-- Blog Categories -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <div id="blog-categories" class="flex flex-wrap justify-center gap-3">
+                    <!-- Categories will be dynamically inserted here -->
                 </div>
+            </div>
+            
+            <!-- Featured Post -->
+            <div id="featured-post" class="mb-12">
+                <!-- Featured post will be dynamically inserted here -->
+            </div>
+            
+            <!-- Blog Grid -->
+            <div id="blog-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
 
-                <!-- Category Filter -->
-                <div id="blog-categories" class="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in" style="animation-delay: 0.2s;">
-                    <!-- Category buttons will be loaded here -->
-                </div>
-
-                <!-- Featured Post -->
-                <div id="featured-post" class="mb-12">
-                    <!-- Featured post will be loaded here -->
-                </div>
-
-                <!-- Blog Posts Grid -->
-                <div id="blog-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Blog posts will be loaded here -->
-                </div>
-
-                <!-- Load More Button -->
-                <div class="text-center mt-12 animate-fade-in" style="animation-delay: 0.8s;">
-                    <button class="btn-outline hover-scale px-6 py-3 rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium transition-all duration-300">
-                        Load More Articles
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-accent/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Resume</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+                    My professional journey, education, and achievements in the world of technology.
+                </p>
+                
+                <!-- View My Work Section -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <button class="btn-primary px-8 py-3 rounded-lg text-lg hover-scale transition-all duration-300" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                        <i data-lucide="eye" class="w-5 h-5 mr-2 inline"></i>
+                        View My Work
                     </button>
+                    <button class="btn-outline px-8 py-3 rounded-lg text-lg hover-scale transition-all duration-300" onclick="window.open('https://linkedin.com/in/shivamkadavla', '_blank')">
+                        <i data-lucide="linkedin" class="w-5 h-5 mr-2 inline"></i>
+                        LinkedIn Profile
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Experience -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-8 flex items-center">
+                        <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-primary"></i>
+                        Professional Experience
+                    </h3>
+                    <div id="experience-list" class="space-y-8">
+                        <!-- Experience items will be dynamically inserted here -->
+                    </div>
+                </div>
+                
+                <!-- Education & Certifications -->
+                <div class="space-y-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-8 flex items-center">
+                            <i data-lucide="graduation-cap" class="w-6 h-6 mr-3 text-primary"></i>
+                            Education
+                        </h3>
+                        <div id="education-list" class="space-y-6">
+                            <!-- Education items will be dynamically inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-8 flex items-center">
+                            <i data-lucide="award" class="w-6 h-6 mr-3 text-primary"></i>
+                            Certifications
+                        </h3>
+                        <div id="certifications-list" class="space-y-4">
+                            <!-- Certifications will be dynamically inserted here -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="min-h-screen py-20 bg-gradient-to-b from-accent/5 to-background">
+    <section id="contact" class="py-20">
         <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-16 animate-fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            Get In Touch
-                        </span>
-                    </h2>
-                    <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8"></div>
-                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
-                    </p>
-                </div>
-
-                <div class="grid lg:grid-cols-2 gap-12">
-                    <!-- Contact Form -->
-                    <div class="card hover-scale transition-all duration-500 hover:shadow-xl animate-fade-in border border-border/50 rounded-lg" style="animation-delay: 0.2s;">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-6">Send a Message</h3>
-                            <form id="contact-form" class="space-y-6">
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-medium mb-2">First Name</label>
-                                        <input type="text" name="firstName" class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="John" required>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium mb-2">Last Name</label>
-                                        <input type="text" name="lastName" class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Doe" required>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-medium mb-2">Email</label>
-                                    <input type="email" name="email" class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="john@example.com" required>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-medium mb-2">Subject</label>
-                                    <input type="text" name="subject" class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Project Discussion" required>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-medium mb-2">Message</label>
-                                    <textarea name="message" rows="5" class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none" placeholder="Tell me about your project..." required></textarea>
-                                </div>
-                                
-                                <button type="submit" class="w-full btn-primary hover-scale bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium transition-all duration-300">
-                                    <i data-lucide="send" class="w-4 h-4 mr-2 inline"></i>
-                                    Send Message
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Contact Information -->
-                    <div class="space-y-8">
-                        <!-- Contact Details -->
-                        <div class="animate-fade-in" style="animation-delay: 0.3s;">
-                            <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
-                            <div class="space-y-4">
-                                <div class="card hover-scale transition-all duration-300 cursor-pointer border border-border/50 rounded-lg p-6">
-                                    <div class="flex items-center">
-                                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                                            <i data-lucide="mail" class="w-6 h-6 text-primary"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium">Email</p>
-                                            <p class="text-muted-foreground">shivam@example.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card hover-scale transition-all duration-300 cursor-pointer border border-border/50 rounded-lg p-6">
-                                    <div class="flex items-center">
-                                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                                            <i data-lucide="phone" class="w-6 h-6 text-primary"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium">Phone</p>
-                                            <p class="text-muted-foreground">+1 (555) 123-4567</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card hover-scale transition-all duration-300 cursor-pointer border border-border/50 rounded-lg p-6">
-                                    <div class="flex items-center">
-                                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                                            <i data-lucide="map-pin" class="w-6 h-6 text-primary"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium">Location</p>
-                                            <p class="text-muted-foreground">San Francisco, CA</p>
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="animate-fade-in">
+                        <h3 class="text-2xl font-semibold mb-6">Let's Connect</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i data-lucide="mail" class="w-5 h-5 mr-4 text-primary"></i>
+                                <span>shivam.kadavla@example.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="phone" class="w-5 h-5 mr-4 text-primary"></i>
+                                <span>+1 (555) 123-4567</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="map-pin" class="w-5 h-5 mr-4 text-primary"></i>
+                                <span>San Francisco, CA</span>
                             </div>
                         </div>
-
-                        <!-- Social Links -->
-                        <div class="animate-fade-in" style="animation-delay: 0.5s;">
-                            <h3 class="text-2xl font-semibold mb-6">Follow Me</h3>
-                            <div class="flex space-x-4">
-                                <a href="https://github.com" class="w-14 h-14 bg-accent/20 rounded-lg flex items-center justify-center hover-scale transition-all duration-300 hover:text-gray-900">
-                                    <i data-lucide="github" class="w-6 h-6"></i>
-                                </a>
-                                <a href="https://linkedin.com" class="w-14 h-14 bg-accent/20 rounded-lg flex items-center justify-center hover-scale transition-all duration-300 hover:text-blue-600">
-                                    <i data-lucide="linkedin" class="w-6 h-6"></i>
-                                </a>
-                                <a href="https://twitter.com" class="w-14 h-14 bg-accent/20 rounded-lg flex items-center justify-center hover-scale transition-all duration-300 hover:text-blue-400">
-                                    <i data-lucide="twitter" class="w-6 h-6"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Quick Response Card -->
-                        <div class="card bg-gradient-to-r from-primary/10 to-accent/10 animate-fade-in border border-border/50 rounded-lg p-6" style="animation-delay: 0.7s;">
-                            <h4 class="text-lg font-semibold mb-2">Quick Response Guarantee</h4>
-                            <p class="text-muted-foreground text-sm mb-4">
-                                I typically respond to all inquiries within 24 hours. For urgent projects, 
-                                feel free to call me directly.
-                            </p>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                <span class="text-green-600 font-medium">Available for new projects</span>
-                            </div>
+                        
+                        <div class="flex space-x-4 mt-8">
+                            <a href="#" class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors duration-300">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Call to Action -->
-                <div class="text-center mt-16 animate-fade-in" style="animation-delay: 0.8s;">
-                    <div class="max-w-2xl mx-auto">
-                        <h3 class="text-2xl font-semibold mb-4">Ready to Start Your Project?</h3>
-                        <p class="text-muted-foreground mb-6">
-                            Whether you need a full-stack web application, AI integration, or technical consultation, 
-                            I'm here to help bring your vision to life.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button class="btn-primary hover-scale bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium transition-all duration-300">
-                                <i data-lucide="mail" class="w-4 h-4 mr-2 inline"></i>
-                                Schedule a Call
-                            </button>
-                            <button class="btn-outline hover-scale px-6 py-3 rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium transition-all duration-300">
-                                View Portfolio
-                            </button>
+                
+                <!-- Contact Form -->
+                <div class="animate-scale-in">
+                    <form id="contact-form" class="contact-form space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium mb-2">First Name</label>
+                                <input 
+                                    type="text" 
+                                    id="firstName" 
+                                    name="firstName" 
+                                    required 
+                                    class="w-full px-4 py-3 rounded-lg border border-border focus:border-primary focus:outline-none transition-colors"
+                                />
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium mb-2">Last Name</label>
+                                <input 
+                                    type="text" 
+                                    id="lastName" 
+                                    name="lastName" 
+                                    required 
+                                    class="w-full px-4 py-3 rounded-lg border border-border focus:border-primary focus:outline-none transition-colors"
+                                />
+                            </div>
                         </div>
-                    </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required 
+                                class="w-full px-4 py-3 rounded-lg border border-border focus:border-primary focus:outline-none transition-colors"
+                            />
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                            <input 
+                                type="text" 
+                                id="subject" 
+                                name="subject" 
+                                required 
+                                class="w-full px-4 py-3 rounded-lg border border-border focus:border-primary focus:outline-none transition-colors"
+                            />
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="5" 
+                                required 
+                                class="w-full px-4 py-3 rounded-lg border border-border focus:border-primary focus:outline-none transition-colors resize-none"
+                            ></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary w-full py-3 rounded-lg text-lg hover-scale transition-all duration-300">
+                            <i data-lucide="send" class="w-5 h-5 mr-2 inline"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="mt-20 text-center">
+                <div class="max-w-md mx-auto">
+                    <h3 class="text-2xl font-semibold mb-4">Stay Updated</h3>
+                    <p class="text-muted-foreground mb-6">Subscribe to get notified about my latest projects and blog posts.</p>
+                    <form id="newsletter-form" class="newsletter-form flex gap-2">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Enter your email" 
+                            required 
+                            class="flex-1 px-4 py-3 rounded-lg border border-border focus:border-primary focus:outline-none transition-colors"
+                        />
+                        <button type="submit" class="btn-primary px-6 py-3 rounded-lg hover-scale transition-all duration-300">
+                            Subscribe
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-background to-accent/5 border-t border-border/50">
+    <footer class="bg-card border-t border-border py-12 relative">
         <div class="container mx-auto px-4">
-            <!-- Main Footer Content -->
-            <div class="py-16">
-                <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
-                    <!-- Brand Column -->
-                    <div class="lg:col-span-1 animate-fade-in">
-                        <div class="mb-6">
-                            <h3 class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                                Shivam Kadavla
-                            </h3>
-                            <p class="text-sm text-muted-foreground mt-2">
-                                Full-Stack Developer & AI Enthusiast
-                            </p>
-                        </div>
-                        <p class="text-muted-foreground mb-6 leading-relaxed">
-                            Crafting innovative solutions with cutting-edge technology. 
-                            Passionate about creating digital experiences that make a difference.
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com" class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover-scale">
-                                <i data-lucide="github" class="w-5 h-5"></i>
-                            </a>
-                            <a href="https://linkedin.com" class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover-scale">
-                                <i data-lucide="linkedin" class="w-5 h-5"></i>
-                            </a>
-                            <a href="https://twitter.com" class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover-scale">
-                                <i data-lucide="twitter" class="w-5 h-5"></i>
-                            </a>
-                            <a href="mailto:shivam@example.com" class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover-scale">
-                                <i data-lucide="mail" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Quick Links -->
-                    <div class="animate-fade-in" style="animation-delay: 0.1s;">
-                        <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
-                        <ul class="space-y-3">
-                            <li><a href="#home" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Home</a></li>
-                            <li><a href="#about" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">About</a></li>
-                            <li><a href="#projects" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Projects</a></li>
-                            <li><a href="#skills" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Skills</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Services -->
-                    <div class="animate-fade-in" style="animation-delay: 0.2s;">
-                        <h4 class="text-lg font-semibold mb-6">Services</h4>
-                        <ul class="space-y-3">
-                            <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Web Development</a></li>
-                            <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">AI Integration</a></li>
-                            <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Consulting</a></li>
-                            <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Technical Writing</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Resources -->
-                    <div class="animate-fade-in" style="animation-delay: 0.3s;">
-                        <h4 class="text-lg font-semibold mb-6">Resources</h4>
-                        <ul class="space-y-3">
-                            <li><a href="#resume" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Resume</a></li>
-                            <li><a href="#blog" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Blog</a></li>
-                            <li><a href="#contact" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Contact</a></li>
-                            <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors duration-300 story-link">Newsletter</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Newsletter Section -->
-            <div class="py-8 border-t border-border/50">
-                <div class="max-w-2xl mx-auto text-center animate-fade-in" style="animation-delay: 0.5s;">
-                    <h3 class="text-xl font-semibold mb-4">Stay Updated</h3>
-                    <p class="text-muted-foreground mb-6">
-                        Get the latest insights on web development, AI, and technology trends.
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-primary">Shivam Kadavla</h3>
+                    <p class="text-muted-foreground">
+                        Full-Stack Developer passionate about creating exceptional digital experiences.
                     </p>
-                    <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                        <input type="email" name="email" placeholder="Enter your email" class="flex-1 px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" required>
-                        <button type="submit" class="btn-primary hover-scale bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium transition-all duration-300">
-                            Subscribe
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Bottom Footer -->
-            <div class="py-6 border-t border-border/50">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div class="flex items-center text-sm text-muted-foreground animate-fade-in" style="animation-delay: 0.6s;">
-                        <span>© 2024 Shivam Kadavla. Made with</span>
-                        <i data-lucide="heart" class="w-4 h-4 mx-1 text-red-500 animate-pulse"></i>
-                        <span>and</span>
-                        <i data-lucide="code-2" class="w-4 h-4 mx-1 text-primary"></i>
-                    </div>
-                    
-                    <div class="flex items-center gap-4">
-                        <div class="flex items-center text-sm text-muted-foreground animate-fade-in" style="animation-delay: 0.7s;">
-                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                            <span>Available for freelance</span>
-                        </div>
-                        
-                        <button id="scroll-to-top" class="btn-ghost hover-scale animate-fade-in p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-accent transition-all duration-300" style="animation-delay: 0.8s;">
-                            <i data-lucide="arrow-up" class="w-4 h-4 mr-1 inline"></i>
-                            Top
-                        </button>
+                    <div class="flex space-x-4">
+                        <a href="#" class="footer-link text-muted-foreground hover:text-primary">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="footer-link text-muted-foreground hover:text-primary">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="footer-link text-muted-foreground hover:text-primary">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="footer-link text-muted-foreground hover:text-primary">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
                     </div>
                 </div>
+                
+                <div class="space-y-4">
+                    <h4 class="font-semibold">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="footer-link text-muted-foreground hover:text-primary">Home</a></li>
+                        <li><a href="#about" class="footer-link text-muted-foreground hover:text-primary">About</a></li>
+                        <li><a href="#projects" class="footer-link text-muted-foreground hover:text-primary">Projects</a></li>
+                        <li><a href="#skills" class="footer-link text-muted-foreground hover:text-primary">Skills</a></li>
+                    </ul>
+                </div>
+                
+                <div class="space-y-4">
+                    <h4 class="font-semibold">Services</h4>
+                    <ul class="space-y-2">
+                        <li><span class="text-muted-foreground">Web Development</span></li>
+                        <li><span class="text-muted-foreground">AI Integration</span></li>
+                        <li><span class="text-muted-foreground">Full-Stack Solutions</span></li>
+                        <li><span class="text-muted-foreground">Consulting</span></li>
+                    </ul>
+                </div>
+                
+                <div class="space-y-4">
+                    <h4 class="font-semibold">Contact Info</h4>
+                    <ul class="space-y-2">
+                        <li class="text-muted-foreground">San Francisco, CA</li>
+                        <li class="text-muted-foreground">shivam.kadavla@example.com</li>
+                        <li class="text-muted-foreground">+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
+                <p>&copy; 2024 Shivam Kadavla. All rights reserved.</p>
             </div>
         </div>
-
-        <!-- Animated Background Elements -->
-        <div class="absolute inset-0 pointer-events-none overflow-hidden">
-            <div class="absolute bottom-0 left-1/4 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-0 right-1/4 w-24 h-24 bg-accent/10 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
-        </div>
+        
+        <!-- Scroll to Top Button -->
+        <button id="scroll-to-top" class="scroll-to-top-btn">
+            <i data-lucide="arrow-up" class="w-5 h-5"></i>
+        </button>
     </footer>
 
-    <!-- Scripts -->
+    <!-- AI Chat Board -->
+    <div id="ai-chat-widget" class="ai-chat-widget">
+        <div id="ai-chat-toggle" class="ai-chat-toggle">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </div>
+        
+        <div id="ai-chat-board" class="ai-chat-board hidden">
+            <div class="ai-chat-header">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-3">
+                        <i data-lucide="bot" class="w-4 h-4 text-primary-foreground"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">AI Assistant</h4>
+                        <span class="text-xs text-green-500 flex items-center">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+                            Online
+                        </span>
+                    </div>
+                </div>
+                <button id="ai-chat-close" class="text-muted-foreground hover:text-foreground">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <div id="ai-chat-messages" class="ai-chat-messages">
+                <div class="ai-message">
+                    <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-2">
+                        <i data-lucide="bot" class="w-3 h-3 text-primary-foreground"></i>
+                    </div>
+                    <div class="ai-message-content">
+                        <p>👋 Hi! I'm Shivam's AI assistant. How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ai-chat-input">
+                <input 
+                    type="text" 
+                    id="ai-message-input" 
+                    placeholder="Type your message..." 
+                    class="ai-input"
+                />
+                <button id="ai-send-btn" class="ai-send-btn">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-    </script>
 </body>
 </html>
